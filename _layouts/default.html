@@ -50,8 +50,23 @@ a:hover {
   z-index: 99;
   text-align: center;
   padding: 12px 0;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border-bottom: 1px solid var(--border-color);
+}
+
+/* 一言模块样式 */
+.hitokoto-box {
+  text-align: center;
+  margin: 20px auto;
+  padding: 10px 20px;
+  max-width: 600px;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  border-left: 3px solid var(--link-color);
+  border-right: 3px solid var(--link-color);
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
 
 /* 主题切换按钮样式 */
@@ -109,10 +124,15 @@ a:hover {
 
 <!-- 导航栏 -->
 <nav class="navbar">
-  <a href="/bg/" style="margin: 0 15px; text-decoration: none;">首页</a>
-  <a href="/bg/search/" style="margin: 0 15px; text-decoration: none;">搜索</a>
-  <a href="/bg/about/" style="margin: 0 15px; text-decoration: none;">关于</a>
+  <a href="/bg/" style="margin: 0 15px; text-decoration: none;">🏠 首页</a>
+  <a href="/bg/search/" style="margin: 0 15px; text-decoration: none;">🔍 搜索</a>
+  <a href="/bg/about/" style="margin: 0 15px; text-decoration: none;">📖 关于</a>
 </nav>
+
+<!-- 一言模块 -->
+<div class="hitokoto-box">
+  <span id="hitokoto_text">加载中...</span>
+</div>
 
 <!-- 页面内容 -->
 {{ content }}
@@ -124,44 +144,56 @@ a:hover {
 <button onclick="topFunction()" id="backToTop" title="返回顶部" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99; border: 1px solid #666; outline: none; background-color: rgba(0, 0, 0, 0.5); color: #888; cursor: pointer; padding: 12px 16px; border-radius: 8px; font-size: 16px; font-weight: bold; backdrop-filter: blur(4px);">↑ 顶部</button>
 
 <script>
+// ========== 一言功能 ==========
+fetch('https://v1.hitokoto.cn/')
+  .then(response => response.json())
+  .then(data => {
+    const hitokotoSpan = document.getElementById('hitokoto_text');
+    if (hitokotoSpan) {
+      hitokotoSpan.innerHTML = `「${data.hitokoto}」 — ${data.from}`;
+    }
+  })
+  .catch(error => {
+    console.error('一言加载失败:', error);
+    const hitokotoSpan = document.getElementById('hitokoto_text');
+    if (hitokotoSpan) {
+      hitokotoSpan.innerHTML = '「代码就像写诗，简洁即力量」 — 佚名';
+    }
+  });
+
 // ========== 主题切换功能 ==========
 (function() {
-  // 获取当前保存的主题，默认暗色
   const savedTheme = localStorage.getItem('theme') || 'dark';
-  // 应用到页面
   document.documentElement.setAttribute('data-theme', savedTheme);
   
-  // 主题切换按钮
   const themeToggle = document.getElementById('themeToggle');
   if (themeToggle) {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    themeToggle.textContent = currentTheme === 'dark' ? '🌓 主题' : '🌞 主题';
+    
     themeToggle.addEventListener('click', function() {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
-      
-      // 可选：更新按钮文字
       themeToggle.textContent = newTheme === 'dark' ? '🌓 主题' : '🌞 主题';
     });
-    
-    // 根据当前主题设置按钮文字
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    themeToggle.textContent = currentTheme === 'dark' ? '🌓 主题' : '🌞 主题';
   }
 })();
 
 // ========== 代码复制功能 ==========
 (function() {
-  var codeBlocks = document.querySelectorAll('.highlight');
+  const codeBlocks = document.querySelectorAll('.highlight');
   codeBlocks.forEach(function(block) {
-    var btn = document.createElement('button');
+    const btn = document.createElement('button');
     btn.className = 'copy-btn';
     btn.textContent = '复制';
     block.style.position = 'relative';
     block.appendChild(btn);
+    
     btn.addEventListener('click', function() {
-      var code = block.querySelector('code');
-      var text = code ? code.innerText : block.innerText;
+      const code = block.querySelector('code');
+      const text = code ? code.innerText : block.innerText;
       navigator.clipboard.writeText(text).then(function() {
         btn.textContent = '已复制 ✓';
         btn.classList.add('copied');
@@ -181,12 +213,12 @@ a:hover {
 })();
 
 // ========== 返回顶部功能 ==========
-var mybutton = document.getElementById("backToTop");
+const backToTopBtn = document.getElementById("backToTop");
 window.onscroll = function() {
   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-    mybutton.style.display = "block";
+    backToTopBtn.style.display = "block";
   } else {
-    mybutton.style.display = "none";
+    backToTopBtn.style.display = "none";
   }
 };
 function topFunction() {
