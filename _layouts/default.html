@@ -3,12 +3,11 @@ layout: hacker/default
 ---
 
 <style>
-  /* 文章标题链接颜色 */
-  .post-link, article h1 a, .post-title a, .entry-title a {
-    color: #ffcc00 !important;  /* 改成你喜欢的颜色 */
+  /* 只改文章正文里的链接（不包括导航栏） */
+  .post-content a, .entry-content a, article a {
+    color: #ffcc00 !important;
   }
-  /* 鼠标悬停时的颜色 */
-  .post-link:hover, article h1 a:hover, .post-title a:hover, .entry-title a:hover {
+  .post-content a:hover, .entry-content a:hover, article a:hover {
     color: #ff6600 !important;
   }
 </style>
