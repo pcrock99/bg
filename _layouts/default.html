@@ -2,24 +2,22 @@
 layout: hacker/default
 ---
 
-<nav style="text-align: center; margin-bottom: 30px; padding-bottom: 10px;">
-  <a href="/bg/" style="margin: 0 15px; color: #f6600;">首页</a>
-  <a href="/bg/search/" style="margin: 0 15px; color: #f6600;">搜索</a>
-  <a href="/bg/about/" style="margin: 0 15px; color: #f6600;">关于</a>
+<nav style="position: sticky; top: 0; background-color: #0a0a0a; z-index: 99; text-align: center; padding: 12px 0; margin-bottom: 30px; border-bottom: none;">
+  <a href="/bg/" style="margin: 0 15px; color: #0f0; text-decoration: none;">首页</a>
+  <a href="/bg/search/" style="margin: 0 15px; color: #0f0; text-decoration: none;">搜索</a>
+  <a href="/bg/about/" style="margin: 0 15px; color: #0f0; text-decoration: none;">关于</a>
 </nav>
 
 {{ content }}
 
 <!-- 返回顶部按钮 -->
-<button onclick="topFunction()" id="backToTop" title="返回顶部" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99; border: 1px solid #666; outline: none; background-color: rgba(0, 0, 0, 0.5); color: #888; cursor: pointer; padding: 12px 16px; border-radius: 8px; font-size: 16px; font-weight: bold; backdrop-filter: blur(4px);">顶</button>
+<button onclick="topFunction()" id="backToTop" title="返回顶部" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 99; border: 1px solid #666; outline: none; background-color: rgba(0, 0, 0, 0.5); color: #888; cursor: pointer; padding: 12px 16px; border-radius: 8px; font-size: 16px; font-weight: bold; backdrop-filter: blur(4px);">↑ 顶部</button>
 
 <style>
-/* 代码块容器样式（让按钮可以绝对定位） */
+/* 代码块复制按钮样式（保持原有功能） */
 .highlight {
   position: relative;
 }
-
-/* 复制按钮样式 */
 .copy-btn {
   position: absolute;
   top: 8px;
@@ -35,13 +33,10 @@ layout: hacker/default
   transition: all 0.2s ease;
   z-index: 10;
 }
-
 .copy-btn:hover {
   background-color: rgba(0, 255, 0, 0.2);
   color: #fff;
 }
-
-/* 复制成功时的样式 */
 .copy-btn.copied {
   border-color: #ffcc00;
   color: #ffcc00;
@@ -51,28 +46,17 @@ layout: hacker/default
 <script>
 // 复制按钮功能
 (function() {
-  // 找到所有代码块
   var codeBlocks = document.querySelectorAll('.highlight');
-  
   codeBlocks.forEach(function(block) {
-    // 创建复制按钮
     var btn = document.createElement('button');
     btn.className = 'copy-btn';
     btn.textContent = '复制';
-    
-    // 把按钮添加到代码块里
     block.style.position = 'relative';
     block.appendChild(btn);
-    
-    // 点击复制
     btn.addEventListener('click', function() {
-      // 获取代码内容（排除行号等干扰）
       var code = block.querySelector('code');
       var text = code ? code.innerText : block.innerText;
-      
-      // 复制到剪贴板
       navigator.clipboard.writeText(text).then(function() {
-        // 复制成功反馈
         btn.textContent = '已复制 ✓';
         btn.classList.add('copied');
         setTimeout(function() {
@@ -92,7 +76,6 @@ layout: hacker/default
 
 // 返回顶部按钮逻辑
 var mybutton = document.getElementById("backToTop");
-
 window.onscroll = function() {
   if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
     mybutton.style.display = "block";
@@ -100,7 +83,6 @@ window.onscroll = function() {
     mybutton.style.display = "none";
   }
 };
-
 function topFunction() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
