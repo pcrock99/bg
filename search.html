@@ -1,0 +1,33 @@
+---
+layout: default
+title: 搜索
+permalink: /search/
+---
+
+<div style="max-width: 800px; margin: 0 auto;">
+  <h1>🔍 搜索文章</h1>
+  
+  <!-- 搜索输入框 -->
+  <input type="text" id="search-input" placeholder="输入关键词搜索..." 
+         style="width: 100%; padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; margin: 20px 0;">
+  
+  <!-- 搜索结果容器 -->
+  <ul id="results-container" style="list-style: none; padding: 0;"></ul>
+</div>
+
+<!-- 引入 Simple-Jekyll-Search 库 -->
+<script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '{{ site.baseurl }}/search.json',
+      searchResultTemplate: '<li style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee;"><a href="{url}" style="font-size: 18px; font-weight: bold;">{title}</a><div style="color: #666; font-size: 14px; margin-top: 5px;">📅 {date}  |  📂 {category}</div></li>',
+      noResultsText: '<p style="text-align: center; color: #666;">😢 没有找到相关文章，试试其他关键词吧~</p>',
+      limit: 20,
+      fuzzy: true
+    });
+  });
+</script>
