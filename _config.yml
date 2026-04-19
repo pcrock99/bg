@@ -4,7 +4,7 @@ baseurl: "/bg"
 url: "https://pcrock99.github.io"
 
 # 主题
-remote_theme: pages-themes/minimal@v0.2.0
+remote_theme: pages-themes/hacker-day@v0.2.0
 
 # 分页配置
 paginate: 50
