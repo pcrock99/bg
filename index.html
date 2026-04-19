@@ -1,11 +1,219 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>我的博客</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 头部 */
+        .header {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #0366d6;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #0366d6;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* 导航栏 */
+        .nav {
+            background: white;
+            padding: 12px 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .nav a {
+            color: #0366d6;
+            text-decoration: none;
+            margin-right: 25px;
+            font-size: 1rem;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* 卡片样式 */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #0366d6;
+            border-left: 4px solid #0366d6;
+            padding-left: 12px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin: 15px 0 10px 0;
+            color: #333;
+        }
+
+        .card p {
+            margin-bottom: 12px;
+            color: #444;
+        }
+
+        .card ul, .card ol {
+            margin-left: 25px;
+            margin-bottom: 12px;
+        }
+
+        .card li {
+            margin-bottom: 5px;
+        }
+
+        /* 文章列表 */
+        .post-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .post-item:last-child {
+            border-bottom: none;
+        }
+
+        .post-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .post-date {
+            font-size: 0.8rem;
+            color: #999;
+            margin-left: 12px;
+        }
+
+        .post-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+            text-align: center;
+            color: #888;
+            font-size: 0.8rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .card {
+                padding: 18px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>欢迎来到我的博客</h1>
-    <p>一个乱七八糟的……脏、乱、差……</p>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>📝 我的博客</h1>
+            <p>记录思考，分享生活</p>
+        </div>
+
+        <!-- 导航 -->
+        <div class="nav">
+            <a href="#">🏠 首页</a>
+            <a href="#">📖 关于</a>
+            <a href="#">📧 联系</a>
+        </div>
+
+        <!-- 主要内容 -->
+        <div class="card">
+            <h2>👋 欢迎</h2>
+            <p>你好！欢迎来到我的个人博客。</p>
+            <p>这里会分享技术笔记、读书心得和生活随想。</p>
+        </div>
+
+        <!-- 最新文章 -->
+        <div class="card">
+            <h2>📌 最新文章</h2>
+            
+            <div class="post-item">
+                <a href="#" class="post-title">Jekyll 博客搭建记录</a>
+                <span class="post-date">2026-04-19</span>
+                <div class="post-desc">从零开始搭建 GitHub Pages 博客的过程...</div>
+            </div>
+
+            <div class="post-item">
+                <a href="#" class="post-title">Markdown 常用语法</a>
+                <span class="post-date">2026-04-18</span>
+                <div class="post-desc">快速上手 Markdown 写作...</div>
+            </div>
+
+            <div class="post-item">
+                <a href="#" class="post-title">Hello World</a>
+                <span class="post-date">2026-04-17</span>
+                <div class="post-desc">我的第一篇文章，博客正式启航！...</div>
+            </div>
+        </div>
+
+        <!-- 关于我 -->
+        <div class="card">
+            <h2>👤 关于我</h2>
+            <p>一个热爱编程和写作的人，正在努力把想法变成文字。</p>
+            <p>📧 邮箱：your-email@example.com</p>
+            <p>🐙 GitHub：<a href="https://github.com/pcrock99" style="color:#0366d6;">@pcrock99</a></p>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <p>© 2026 我的博客 | Powered by GitHub Pages</p>
+        </div>
+    </div>
 </body>
 </html>
