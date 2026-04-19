@@ -1,1 +1,28 @@
-title: "我的博客"
+title: pcrock
+description: 一个乱七八糟的...脏、乱、差...
+baseurl: "/bg"
+url: "https://pcrock99.github.io"
+
+# 主题
+remote_theme: pages-themes/hacker@v0.2.0
+
+# 分页配置
+paginate: 50
+paginate_path: "/page:num/"
+
+# 插件
+plugins:
+  - jekyll-remote-theme
+  - jekyll-paginate
+
+
+# pages-themes/minimal@v0.2.0	    	极简侧边栏
+# pages-themes/cayman@v0.2.0	    		大标题现代风
+# pages-themes/architect@v0.2.0	  		深色技术风
+# pages-themes/hacker@v0.2.0	    		终端黑客风
+# pages-themes/leap-day@v0.2.0	   		优雅蓝调
+# pages-themes/merlot@v0.2.0	    		酒红复古
+# pages-themes/midnight@v0.2.0	  		深蓝沉稳
+# pages-themes/slate@v0.2.0			    	深灰简洁
+# pages-themes/time-machine@v0.2.0		怀旧感
+# pages-themes/dinky@v0.2.0	      		深红醒目
