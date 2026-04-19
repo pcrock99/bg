@@ -2,7 +2,6 @@
 title: 首页
 ---
 
-## 最新文章
 
 <ul>
   {% for post in site.posts %}
