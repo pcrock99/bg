@@ -15,6 +15,7 @@ plugins:
   - jekyll-remote-theme
   - jekyll-paginate
 
+
 # 极简侧边栏
 # remote_theme: pages-themes/minimal@v0.2.0
 
