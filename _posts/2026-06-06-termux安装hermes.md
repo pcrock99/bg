@@ -1,3 +1,9 @@
+---
+layout: default
+title: termux安装hermes
+date: 2026-01-01
+---
+
 📱 Hermes Agent Termux 完整安装指南
 
 
