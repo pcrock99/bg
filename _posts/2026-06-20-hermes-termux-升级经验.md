@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hermes Agent Termux (Android) 升级经验"
-date: 2026-06-20 19:00:00 +0800
+date: 2026-06-20
 categories: [android, termux, hermes, python]
 tags: [hermes-agent, termux, android, pip, rust, pydantic-core, upgrade]
 ---
